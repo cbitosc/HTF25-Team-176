@@ -1,0 +1,561 @@
+:root {
+  --midnight-purple: #2E003E;
+  --pumpkin-spice: #E85D04;
+  --soft-beige: #FFF5E1;
+  --forest-green: #386641;
+  --warm-yellow: #FFD60A;
+  --accent: var(--pumpkin-spice);
+  --accent-light: var(--warm-yellow);
+  --muted: #8B7E74;
+  --bg: var(--midnight-purple);
+  --text-primary: var(--soft-beige);
+  --border-color: #4A1259;
+}
+
+/* Animated Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(232, 93, 4, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(56, 102, 65, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--midnight-purple) 0%, #1a0024 100%);
+  z-index: -1;
+  animation: backgroundShift 20s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83zM22.343 0L13.857 8.485 15.272 9.9l7.9-7.9h-.83zm5.657 0L19.514 8.485 20.93 9.9 30.3 0h-2.3zM32 0L25.515 6.485 26.93 7.9 34.828 0H32zm2.828 0L27.314 8.485l1.414 1.414L37.157 0h-2.33zm5.657 0L32.97 8.485l1.415 1.414L42.813 0h-2.328zm5.657 0L38.626 8.485 40.04 9.9l8.486-8.485h-2.33zm5.657 0l-7.071 7.07 1.414 1.415 7.07-7.07h-1.413zM20.485 0L8.485 12 9.9 13.414 21.9 1.414 20.485 0z' fill='%234A1259' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23E85D04' fill-opacity='0.05'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+  opacity: 0.8;
+  animation: patternFloat 180s linear infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Background Shift Animation */
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Pattern Float Animation */
+@keyframes patternFloat {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+/* Card Hover Animation */
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(232, 93, 4, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
+  }
+}
+
+/* Button Hover Animation */
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(232, 93, 4, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(232, 93, 4, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(232, 93, 4, 0);
+  }
+}
+
+body {
+  font-family: 'Nunito', system-ui, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--text-primary);
+  background-color: var(--bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lobster Two', 'Playfair Display', serif;
+  color: var(--warm-yellow);
+  position: relative;
+}
+
+h1::after, h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--pumpkin-spice);
+  transition: width 0.3s ease;
+}
+
+h1:hover::after, h2:hover::after {
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 24px;
+  background: rgba(46, 0, 62, 0.95);
+  border-bottom: 2px solid var(--pumpkin-spice);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--soft-beige);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav a:hover {
+  color: var(--warm-yellow);
+  text-shadow: 0 0 8px rgba(255, 214, 10, 0.4);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--pumpkin-spice);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.container {
+  padding: 32px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 2px solid var(--border-color);
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: rgba(46, 0, 62, 0.7);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(232, 93, 4, 0.2);
+  border-color: var(--pumpkin-spice);
+  animation: cardGlow 2s ease-in-out infinite;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.button {
+  background: var(--pumpkin-spice);
+  color: var(--soft-beige);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: 0.6s;
+  z-index: -1;
+}
+
+.button:hover {
+  background: var(--warm-yellow);
+  color: var(--midnight-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 93, 4, 0.3);
+  animation: buttonPulse 1.5s infinite;
+}
+
+.button:hover::before {
+  transform: translateX(100%);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Animated Input Fields */
+input, select, textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+input:focus, select:focus, textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 93, 4, 0.15);
+}
+
+/* Navigation Animation */
+.nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--pumpkin-spice);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+.nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Hero Section Animation */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '🎃';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+  right: 10%;
+  top: 20%;
+}
+
+.hero::after {
+  content: '👻';
+  position: absolute;
+  font-size: 100px;
+  opacity: 0.1;
+  animation: float 8s ease-in-out infinite;
+  left: 15%;
+  bottom: 20%;
+}
+
+/* Grid Animation */
+.grid {
+  perspective: 1000px;
+}
+
+.grid > * {
+  transform-style: preserve-3d;
+  animation: cardEntrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: calc(var(--order) * 100ms);
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.button:hover::after {
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
+}
+
+.button.secondary {
+  background: transparent;
+  border: 2px solid var(--pumpkin-spice);
+  color: var(--soft-beige);
+}
+
+.button.secondary:hover {
+  background: var(--pumpkin-spice);
+  color: var(--soft-beige);
+}
+
+.small {
+  font-size: 0.875rem;
+  color: var(--soft-beige);
+  opacity: 0.8;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.form-row {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-row label {
+  font-weight: 600;
+  color: var(--warm-yellow);
+  font-family: 'Nunito', sans-serif;
+}
+
+input, select, textarea {
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  background: rgba(46, 0, 62, 0.5);
+  color: var(--soft-beige);
+  font-family: 'Nunito', sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--pumpkin-spice);
+  box-shadow: 0 0 0 3px rgba(232, 93, 4, 0.2);
+  background: rgba(46, 0, 62, 0.8);
+}
+
+input::placeholder, select::placeholder, textarea::placeholder {
+  color: var(--soft-beige);
+  opacity: 0.6;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 24px;
+  background: linear-gradient(135deg, var(--midnight-purple) 0%, var(--forest-green) 100%);
+  color: var(--soft-beige);
+  margin: -32px -24px 32px -24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '🎃';
+  font-size: 180px;
+  position: absolute;
+  opacity: 0.1;
+  top: -20px;
+  left: -20px;
+  transform: rotate(-15deg);
+}
+
+.hero::after {
+  content: '👻';
+  font-size: 160px;
+  position: absolute;
+  opacity: 0.1;
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(15deg);
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  color: var(--warm-yellow);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-family: 'Gloria Hallelujah', cursive;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--soft-beige);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.search-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin: -12px auto 32px auto;
+  background: rgba(46, 0, 62, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  border: 2px solid var(--pumpkin-spice);
+  backdrop-filter: blur(8px);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Additional Halloween-themed components */
+.product-card {
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  background: linear-gradient(45deg, var(--pumpkin-spice) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover::before {
+  opacity: 0.1;
+}
+
+.footer {
+  background: var(--midnight-purple);
+  border-top: 2px solid var(--pumpkin-spice);
+  color: var(--soft-beige);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pumpkin-spice), var(--warm-yellow), var(--pumpkin-spice));
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.product-details {
+  flex-grow: 1;
+}
+
+.footer {
+  background: white;
+  border-top: 1px solid var(--border-color);
+  padding: 48px 24px;
+  margin-top: 64px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 48px;
+}

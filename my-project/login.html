@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpookyMart - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lobster+Two:wght@400;700&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <script src="app.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'spooky-bg': '#100F0F',
+            'pumpkin': '#F46F00',
+            'pumpkin-dark': '#D86100',
+            'ghost-white': '#F5F5F5',
+            'witch-purple': '#4B0082',
+            'slime-green': '#90EE90',
+          },
+          fontFamily: {
+            'lobster': ['"Lobster Two"', 'cursive'],
+            'playfair': ['"Playfair Display"', 'serif'],
+            'nunito': ['"Nunito"', 'sans-serif'],
+            'gloria': ['"Gloria Hallelujah"', 'cursive'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-spooky-bg font-nunito text-ghost-white">
+  <div id="page-login" class="flex items-center justify-center min-h-screen card-enter">
+    <div class="w-full max-w-md p-8 m-4 bg-gray-900 rounded-lg shadow-lg shadow-pumpkin/20">
+      <div class="flex justify-center mb-4">
+        <svg class="w-12 h-12 text-pumpkin" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0c-1.657 0-3-.895-3-2s1.343-2 3-2 3-.895 3-2-1.343-2-3-2m0 8c1.11 0 2.08-.402 2.599-1M12 16v1m0-1v-8m0 0v-1m0 1c-1.11 0-2.08.402-2.599 1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-lobster text-center text-pumpkin mb-6">SpookyMart</h1>
+      <div class="flex justify-center mb-6 gap-x-8">
+        <button id="tab-customer" class="login-tab tab-active">Customer</button>
+        <button id="tab-vendor" class="login-tab">Vendor</button>
+        <button id="tab-admin" class="login-tab">Admin</button>
+      </div>
+      <form id="login-form">
+        <h2 id="login-title" class="text-2xl font-playfair text-ghost-white mb-5 text-center">Customer Login</h2>
+        <div id="signup-fields" class="signup-fields-wrapper">
+          <div class="mb-4">
+            <label for="name" class="block mb-2 text-sm font-medium text-pumpkin">Full Name</label>
+            <input type="text" id="name" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:border-pumpkin focus:ring-1 focus:ring-pumpkin">
+          </div>
+          <div id="company-field" class="mb-4 company-field-wrapper">
+            <label for="company" class="block mb-2 text-sm font-medium text-pumpkin">Company Name</label>
+            <input type="text" id="company" placeholder="e.g., 'Ghoulish Goods Inc.'" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:border-pumpkin focus:ring-1 focus:ring-pumpkin">
+            <p class="text-xs text-gray-400 mt-1">Your store will be pending approval from an admin.</p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block mb-2 text-sm font-medium text-pumpkin">Email</label>
+          <input type="email" id="email" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:border-pumpkin focus:ring-1 focus:ring-pumpkin" required>
+        </div>
+        <div class="mb-2">
+          <label for="password" class="block mb-2 text-sm font-medium text-pumpkin">Password</label>
+          <div class="relative">
+            <input type="password" id="password" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:border-pumpkin focus:ring-1 focus:ring-pumpkin" required>
+            <button type="button" id="toggle-password"  class="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-pumpkin">
+            </button>
+          </div>
+        </div>
+        <div class="text-right mb-6">
+          <a href="#" class="text-sm font-medium text-pumpkin hover:underline">Forgot Password?</a>
+        </div>
+        <button id="form-submit-btn" type="submit" class="w-full py-2 px-4 bg-pumpkin text-spooky-bg font-bold rounded-md hover:bg-pumpkin-dark transition-all duration-300 active:scale-95">
+          Login
+        </button>
+        <p class="text-sm text-center text-gray-400 mt-6">
+          <span id="toggle-text">Don't have an account?</span>
+          <a href="#" id="toggle-link" class="font-medium text-pumpkin hover:underline">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

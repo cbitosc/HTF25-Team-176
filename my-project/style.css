@@ -1,0 +1,377 @@
+/* Import Tailwind's base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #2b2b2b; }
+::-webkit-scrollbar-thumb { background: #F46F00; border-radius: 4px;}
+::-webkit-scrollbar-thumb:hover { background: #D86100; }
+
+/* Reusable Components */
+@layer components {
+.login-tab {
+  @apply w-full py-3 text-center font-semibold text-gray-400 cursor-pointer 
+         relative /* Required for positioning the underlines */
+         transition-all duration-300 ease-in-out
+         hover:text-ghost-white /* Brighter text on hover */
+         hover:-translate-y-px; /* Subtle 'pop' on hover */
+}
+
+/* This is the default, INACTIVE gray line */
+.login-tab::before {
+  content: '';
+  @apply absolute left-0 bottom-0 h-[2px] w-full bg-gray-700;
+}
+
+/* This is the ACTIVE orange line (hidden by default) */
+.login-tab::after {
+  content: '';
+  @apply absolute left-0 bottom-0 h-[2px] w-full bg-pumpkin
+         transform scale-x-0 /* Start invisible (0% width) */
+         origin-center /* Ensures it scales from the middle */
+         transition-transform duration-300 ease-in-out;
+}
+
+/* When the tab is active... */
+.login-tab.tab-active {
+  @apply text-pumpkin; /* Change the text color to orange */
+}
+
+/* ...scale the orange line to 100% width */
+.login-tab.tab-active::after {
+  @apply transform scale-x-100;
+}
+  
+  /* Customer Nav Links */
+  .nav-link {
+    @apply text-ghost-white font-semibold relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-pumpkin after:transition-all after:duration-300;
+  }
+  .nav-link:hover {
+    @apply text-pumpkin;
+  }
+  .nav-link:hover:after {
+    @apply w-full;
+  }
+  .nav-icon {
+    @apply text-ghost-white p-2 rounded-full hover:bg-pumpkin/20 hover:text-pumpkin transition-colors duration-300;
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-gray-900 rounded-lg shadow-lg overflow-hidden transition-all duration-300 group hover:shadow-2xl hover:shadow-pumpkin/20 hover:-translate-y-1;
+  }
+
+  /* Dashboard Sidebar */
+  .dash-nav-item {
+    @apply flex items-center space-x-3 px-4 py-3 rounded-md text-gray-400 font-semibold transition-all duration-300;
+  }
+  .dash-nav-item:hover {
+    @apply bg-pumpkin/20 text-ghost-white;
+  }
+  .dash-nav-item.active {
+    @apply bg-pumpkin text-spooky-bg shadow-md;
+  }
+  
+  /* Dashboard Stats Cards */
+  .dash-card {
+    @apply p-6 rounded-lg shadow-lg;
+  }
+  .dash-card-title {
+    @apply text-sm font-semibold text-gray-400 uppercase tracking-wider;
+  }
+  .dash-card-value {
+    @apply text-3xl font-bold text-ghost-white mt-2;
+  }
+  .dash-card-delta {
+    @apply text-sm font-semibold mt-1;
+  }
+  .dash-card-delta.good { @apply text-slime-green; }
+  .dash-card-delta.bad { @apply text-red-500; }
+
+  /* Dashboard Tables */
+  .table-th {
+    @apply p-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider;
+  }
+  .table-td {
+    @apply p-4 whitespace-nowrap text-sm text-ghost-white border-t border-gray-800;
+  }
+  .status-badge {
+    @apply px-2 py-0.5 text-xs font-bold rounded-full;
+  }
+
+  /* Shared Customer Page Header/Footer */
+  .customer-header {
+    @apply bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-pumpkin/10;
+  }
+  .customer-footer {
+    @apply bg-gray-900 border-t border-pumpkin/20 mt-16;
+  }
+
+  /* Loading Spinner */
+  .loading-spinner {
+    @apply inline-block w-4 h-4 border-2 border-pumpkin border-t-transparent rounded-full animate-spin;
+  }
+
+  /* Page Transition Animations */
+  .page-transition {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  .page-enter {
+    @apply opacity-0 transform translate-y-4;
+  }
+  .page-enter-active {
+    @apply opacity-100 transform translate-y-0;
+  }
+  .page-exit {
+    @apply opacity-100 transform translate-y-0;
+  }
+  .page-exit-active {
+    @apply opacity-0 transform -translate-y-4;
+  }
+
+  /* Button Animations */
+  .btn-animated {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  .btn-animated:hover {
+    @apply transform scale-105 shadow-lg;
+  }
+  .btn-animated:active {
+    @apply transform scale-95;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-gray-700 animate-pulse rounded;
+  }
+  .skeleton-text {
+    @apply skeleton h-4 w-full mb-2;
+  }
+  .skeleton-title {
+    @apply skeleton h-6 w-3/4 mb-4;
+  }
+  .skeleton-card {
+    @apply skeleton h-32 w-full mb-4;
+  }
+}
+
+.login-tab {
+  @apply w-full py-3 text-center font-semibold text-gray-400 cursor-pointer 
+         relative /* Required for positioning the underlines */
+         transition-all duration-300 ease-in-out
+         hover:text-ghost-white /* Brighter text on hover */
+         hover:-translate-y-px; /* Subtle 'pop' on hover */
+}
+
+/* This is the default, INACTIVE gray line */
+.login-tab::before {
+  content: '';
+  @apply absolute left-0 bottom-0 h-[2px] w-full bg-gray-700;
+}
+
+/* This is the ACTIVE orange line (hidden by default) */
+.login-tab::after {
+  content: '';
+  @apply absolute left-0 bottom-0 h-[2px] w-full bg-pumpkin
+         transform scale-x-0 /* Start invisible (0% width) */
+         origin-center /* Ensures it scales from the middle */
+         transition-transform duration-300 ease-in-out;
+}
+
+/* When the tab is active... */
+.login-tab.tab-active {
+  @apply text-pumpkin; /* Change the text color to orange */
+}
+
+/* ...scale the orange line to 100% width */
+.login-tab.tab-active::after {
+  @apply transform scale-x-100;
+}
+
+/* NEW: Styles for the Login/Sign-Up Field Animation
+*/
+.signup-fields-wrapper, .company-field-wrapper {
+  /* This setup allows us to animate max-height, opacity, and transform */
+  transition: all 0.4s ease-in-out;
+  transform-origin: top;
+  overflow: hidden;
+}
+
+/* State when hidden */
+.fields-hidden {
+  opacity: 0;
+  transform: scaleY(0.9);
+  max-height: 0px;
+  /* We also animate the margin to prevent "jumps" */
+  margin-bottom: 0px !important; 
+}
+
+/* State when visible */
+.fields-visible {
+  opacity: 1;
+  transform: scaleY(1);
+  max-height: 500px; /* Needs to be larger than the content will ever be */
+  margin-bottom: 1rem; /* The default 'mb-4' */
+}
+
+/* NEW: Animation for the card fading in on load
+*/
+@keyframes card-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card-enter {
+  animation: card-fade-in 0.5s ease-out;
+}
+
+/* Page Transition Animations */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-20px); }
+}
+
+.page-enter {
+  animation: page-fade-in 0.3s ease-out;
+}
+
+.page-exit {
+  animation: page-fade-out 0.2s ease-in;
+}
+
+/* Loading Spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #F46F00;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+/* Button Press Animation */
+@keyframes button-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.btn-press {
+  animation: button-press 0.2s ease-in-out;
+}
+
+/* Skeleton Loading */
+@keyframes skeleton-loading {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Enhanced Product Card Hover */
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(244, 111, 0, 0.3);
+}
+
+/* Form Submission Animation */
+@keyframes form-submit {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.form-submit {
+  animation: form-submit 0.3s ease-in-out;
+}
+
+/* Notification Toast */
+@keyframes toast-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(100%); opacity: 0; }
+}
+
+.toast-enter {
+  animation: toast-slide-in 0.3s ease-out;
+}
+
+.toast-exit {
+  animation: toast-slide-out 0.3s ease-in;
+}
+
+/* Enhanced Product Card Hover Animation */
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(244, 111, 0, 0.3);
+}
+
+.product-card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(16, 15, 15, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.loading-overlay.hidden {
+  display: none;
+}
+
+/* Bounce Animation for Success Messages */
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.bounce-in {
+  animation: bounce-in 0.6s ease-out;
+}
+
+/* Pulse Animation for Notifications */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}

@@ -1,0 +1,220 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import './FormStyles.css';
+
+// Import fonts
+import '@fontsource/lobster-two';
+import '@fontsource/nunito';
+import '@fontsource/gloria-hallelujah';
+
+/**
+ * Sign Up Form Component
+ * Halloween themed sign up form with animations
+ */
+export default function SignUpForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const inputVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: "easeOut" }
+    }
+  };
+
+  const buttonVariants = {
+    idle: { scale: 1 },
+    hover: { 
+      scale: 1.03,
+      boxShadow: "0 5px 15px rgba(232, 93, 4, 0.3)",
+      transition: { duration: 0.2, ease: "easeInOut" }
+    },
+    tap: { scale: 0.98 }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setError(''); // Clear previous errors
+
+    // Basic validation
+    if (!email || !password || !confirmPassword) {
+      setError('🎃 Oops! Fill in all fields to complete your spooky registration!');
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError('🦇 Your magical spells don\'t match! Try again, if you dare...');
+      return;
+    }
+    if (password.length < 6) {
+      setError('👻 Your spell is too weak! At least 6 characters to make it powerful!');
+      return;
+    }
+
+    // --- Registration Logic Goes Here ---
+    // This is where you would call your registration API
+    
+    console.log('Casting signup spell with:', { email });
+
+    // Show success message before redirecting
+    const successMessage = document.createElement('div');
+    successMessage.className = 'success-message';
+    successMessage.textContent = '🎃 Welcome to the Haunted Marketplace! Redirecting you to your magical realm...';
+    
+    // You would typically handle the API call here
+    // For now, we'll just simulate success
+    setTimeout(() => {
+      // Here you would redirect to login or dashboard
+      console.log('Spell cast successfully! Welcome to the haunted marketplace!');
+    }, 2000);
+  };
+
+  return (
+    <div>
+      <motion.div
+        className="halloween-form-container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+      {/* Spooky Decorative Elements */}
+      <div className="spooky-elements">
+        <motion.div
+          className="spider-web"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <svg viewBox="0 0 100 100" fill="#FFF5E1">
+            <path d="M0,0 L100,100 M0,100 L100,0 M50,0 L50,100 M0,50 L100,50" stroke="#FFF5E1" strokeWidth="1"/>
+          </svg>
+        </motion.div>
+        <motion.div
+          className="bats"
+          animate={{ 
+            y: [0, -10, 0],
+            rotateY: [0, 180, 0]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: Math.random() * 2
+          }}
+        >
+          {/* Simple bat SVG shapes */}
+          <svg viewBox="0 0 100 50" fill="#386641">
+            <path d="M20,25 L10,15 L20,5 L30,15 L20,25 Z"/>
+            <path d="M50,25 L40,15 L50,5 L60,15 L50,25 Z"/>
+            <path d="M80,25 L70,15 L80,5 L90,15 L80,25 Z"/>
+          </svg>
+        </motion.div>
+      </div>
+
+      <h1 className="form-title">Join the Haunted Marketplace</h1>
+      <p className="form-subtitle">Begin your spooky journey...</p>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              className="error-message"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+            >
+              {error}
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        {/* Email Input */}
+        <motion.div variants={inputVariants}>
+          <label htmlFor="email" className="halloween-label">
+            Email address
+          </label>
+          <motion.input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="halloween-input"
+            placeholder="you@example.com"
+            whileFocus={{ scale: 1.01 }}
+          />
+        </motion.div>
+
+        {/* Password Input */}
+        <motion.div variants={inputVariants}>
+          <label htmlFor="password" className="halloween-label">
+            Choose your secret spell
+          </label>
+          <motion.input
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="new-password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="halloween-input"
+            placeholder="••••••••"
+            whileFocus={{ scale: 1.01 }}
+          />
+        </motion.div>
+
+        {/* Confirm Password Input */}
+        <motion.div variants={inputVariants}>
+          <label htmlFor="confirmPassword" className="halloween-label">
+            Confirm your secret spell
+          </label>
+          <motion.input
+            id="confirmPassword"
+            name="confirmPassword"
+            type="password"
+            autoComplete="new-password"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            className="halloween-input"
+            placeholder="••••••••"
+            whileFocus={{ scale: 1.01 }}
+          />
+        </motion.div>
+
+        {/* Submit Button */}
+        <motion.button
+          type="submit"
+          className="halloween-button"
+          variants={buttonVariants}
+          initial="idle"
+          whileHover="hover"
+          whileTap="tap"
+        >
+          Cast Your Spell 🎃
+        </motion.button>
+      </form>
+    </motion.div>
+    </div>
+  );
+}

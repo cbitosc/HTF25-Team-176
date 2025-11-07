@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import "./styles/HalloweenTheme.css";
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-dark: #1a1a1a;
+  --primary-orange: #ff6b1a;
+  --primary-purple: #6b1aff;
+  --accent-green: #00ff88;
+  --text-light: #f0f0f0;
+  --shadow-color: rgba(255, 107, 26, 0.2);
+  --card-bg: #2a2a2a;
+
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--text-light);
+  background-color: var(--primary-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Halloween Specific Typography */
+h1, h2, h3 {
+  font-family: 'Creepster', cursive;
+  letter-spacing: 0.05em;
+  color: var(--primary-orange);
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+h1 {
+  font-size: 4em;
+  line-height: 1.1;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary-orange);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+a:hover {
+  color: var(--accent-green);
+  text-shadow: 0 0 8px var(--shadow-color);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #2d1f3d 100%);
+  color: var(--text-light);
+}
+
+/* Modern Button Styles */
+button {
+  border-radius: 8px;
+  border: 2px solid var(--primary-orange);
+  padding: 0.8em 1.6em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, var(--primary-orange), var(--primary-purple));
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  border-color: var(--accent-green);
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--shadow-color);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-orange);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-purple);
+}
+
+/* Disable light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text-light);
+    background-color: var(--primary-dark);
+  }
+}

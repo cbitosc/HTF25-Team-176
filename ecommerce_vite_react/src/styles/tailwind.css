@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  body {
+    @apply bg-midnight-purple text-soft-beige;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-lobster text-warm-yellow;
+  }
+}
+
+/* Custom components */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-semibold transition-all duration-300;
+  }
+  .btn-primary {
+    @apply bg-pumpkin-spice text-soft-beige hover:bg-warm-yellow hover:text-midnight-purple;
+  }
+  .btn-secondary {
+    @apply border-2 border-pumpkin-spice text-soft-beige hover:bg-pumpkin-spice;
+  }
+  .card {
+    @apply bg-midnight-purple/70 backdrop-blur-md border-2 border-pumpkin-spice rounded-xl p-6 transition-all duration-300 hover:border-warm-yellow;
+  }
+  .form-input {
+    @apply bg-midnight-purple/50 border-2 border-pumpkin-spice rounded-lg px-4 py-2 text-soft-beige placeholder-soft-beige/60 focus:outline-none focus:border-warm-yellow;
+  }
+}

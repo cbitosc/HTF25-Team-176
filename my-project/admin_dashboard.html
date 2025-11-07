@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-g">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpookyMart - Admin Dashboard</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lobster+Two:wght@400;700&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="tailwind.config.js"></script>
+</head>
+
+<body class="bg-spooky-bg font-nunito text-ghost-white">
+
+  <div class="flex h-screen bg-spooky-bg">
+    <aside class="w-64 bg-gray-900 shadow-lg shadow-pumpkin/10 flex flex-col">
+      <div class="h-16 flex items-center justify-center border-b border-gray-800">
+        <h1 class="text-2xl font-lobster text-pumpkin">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="#" class="dash-nav-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="dash-nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span class="flex-1">Approve Vendors</span>
+          <span class="bg-slime-green text-spooky-bg text-xs font-bold rounded-full px-2 py-0.5">3</span>
+        </a>
+        </nav>
+      <div class="p-4 mt-auto border-t border-gray-800">
+        <a href="index.html" class="w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-ghost-white bg-pumpkin/20 hover:bg-pumpkin/30">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+      <h2 class="text-3xl font-playfair text-ghost-white mb-6">Welcome, Admin!</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="dash-card bg-witch-purple">
+          <h4 class="dash-card-title">Total Revenue</h4>
+          <p class="dash-card-value">$45,231.89</p>
+          <p class="dash-card-delta good">+5.4% vs last month</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Active Vendors</h4>
+          <p class="dash-card-value">72</p>
+          <p class="dash-card-delta good">+2 new</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Pending Vendors</h4>
+          <p class="dash-card-value">3</p>
+          <p class="dash-card-delta bad">Needs Approval</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Total Orders</h4>
+          <p class="dash-card-value">1,204</p>
+          <p class="dash-card-delta good">+12% vs last month</p>
+        </div>
+      </div>
+
+      <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <h3 class="text-xl font-playfair text-ghost-white p-4 border-b border-gray-800">Pending Vendor Approvals</h3>
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-800">
+              <th class="table-th">Company Name</th>
+              <th class="table-th">Owner</th>
+              <th class="table-th">Date Joined</th>
+              <th class="table-th">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-td">Ghoulish Goods Inc.</td>
+              <td class="table-td">Morticia Addams</td>
+              <td class="table-td">Oct 26, 2025</td>
+              <td class="table-td">
+                <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Approve</button>
+                <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80">Deny</button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

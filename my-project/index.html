@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpookyMart - E-Commerce</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lobster+Two:wght@400;700&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="app.js" defer></script>
+  <script src="spa.js" defer></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'spooky-bg': '#100F0F',
+            'pumpkin': '#F46F00',
+            'pumpkin-dark': '#D86100',
+            'ghost-white': '#F5F5F5',
+            'witch-purple': '#4B0082',
+            'slime-green': '#90EE90',
+          },
+          fontFamily: {
+            'lobster': ['"Lobster Two"', 'cursive'],
+            'playfair': ['"Playfair Display"', 'serif'],
+            'nunito': ['"Nunito"', 'sans-serif'],
+            'gloria': ['"Gloria Hallelujah"', 'cursive'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Simple scrollbar for dark theme */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #2b2b2b; }
+    ::-webkit-scrollbar-thumb { background: #F46F00; border-radius: 4px;}
+    ::-webkit-scrollbar-thumb:hover { background: #D86100; }
+  </style>
+</head>
+
+<body class="bg-spooky-bg font-nunito text-ghost-white">
+
+  
+
+  <div id="page-landing" class="">
+    <header class="bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-lg shadow-pumpkin/10">
+      <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-3xl font-lobster text-pumpkin">SpookyMart</h1>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html#Hero" class="nav-link">Home</a>
+          <a href="order.html" class="nav-link">Orders</a>
+          <a href="cart.html" data-page="page-cart" class="nav-link">Cart</a>
+          <a href="about.html" data-page="page-about" class="nav-link">About</a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <button class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>
+          </button>
+          <a href="cart.html" data-page="page-cart"><button class="nav-icon relative">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" /></svg>
+            <span class="absolute -top-2 -right-2 bg-pumpkin text-spooky-bg text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">3</span>
+          </button></a>
+          <a href="login.html"
+   class="ml-2 px-4 py-2 text-sm bg-pumpkin text-spooky-bg font-bold rounded-md hover:bg-pumpkin-dark transition duration-300 inline-block text-center">
+  Logout
+</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="Hero" class="min-h-[60vh] flex items-center justify-center relative overflow-y-auto">
+        <!-- Floating Halloween Elements -->
+        <div class="absolute inset-0 overflow-y-auto">
+          <div class="floating-pumpkin absolute top-10 left-10 text-6xl animate-bounce">🎃</div>
+          <div class="floating-ghost absolute top-20 right-20 text-4xl animate-pulse">👻</div>
+          <div class="floating-bat absolute bottom-20 left-20 text-3xl animate-ping">🦇</div>
+          <div class="floating-spider absolute bottom-10 right-10 text-2xl animate-bounce">🕷️</div>
+        </div>
+
+        <div class="absolute inset-0 bg-gradient-to-r from-spooky-bg via-witch-purple/20 to-spooky-bg opacity-70"></div>
+        <div class="relative z-10 text-center p-8">
+          <h2 class="text-6xl md:text-8xl font-gloria text-pumpkin drop-shadow-lg animate-pulse">Boo-tiful Deals!</h2>
+          <p class="text-xl md:text-2xl font-playfair text-ghost-white mt-4 max-w-2xl animate-fade-in">
+            All your Halloween needs, from costumes to creepy decor, gathered in one haunted marketplace.
+          </p>
+          <a href="#categories" class="mt-8 inline-block py-3 px-8 bg-gradient-to-r from-pumpkin to-pumpkin-dark text-spooky-bg font-bold text-lg rounded-full hover:shadow-lg hover:shadow-pumpkin/50 transition-all duration-300 animate-bounce">
+            Explore Now
+          </a>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section id="categories" class="container mx-auto px-4 py-16">
+        <h3 class="text-4xl font-playfair text-center mb-12 text-ghost-white animate-fade-in">Spooky Categories</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="category-card bg-gradient-to-br from-witch-purple to-gray-800 p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300">
+            <div class="text-6xl mb-4">🎃</div>
+            <h4 class="text-xl font-bold text-ghost-white">Costumes</h4>
+          </div>
+          <div class="category-card bg-gradient-to-br from-slime-green to-gray-800 p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300">
+            <div class="text-6xl mb-4">🕷️</div>
+            <h4 class="text-xl font-bold text-ghost-white">Decor</h4>
+          </div>
+          <div class="category-card bg-gradient-to-br from-pumpkin to-gray-800 p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300">
+            <div class="text-6xl mb-4">👻</div>
+            <h4 class="text-xl font-bold text-ghost-white">Props</h4>
+          </div>
+          <div class="category-card bg-gradient-to-br from-gray-700 to-gray-900 p-6 rounded-lg text-center hover:scale-105 transition-transform duration-300">
+            <div class="text-6xl mb-4">🦇</div>
+            <h4 class="text-xl font-bold text-ghost-white">Accessories</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Vendors Section -->
+      <section id="vendors" class="bg-gray-900/50 py-16">
+        <div class="container mx-auto px-4">
+          <h3 class="text-4xl font-playfair text-center mb-12 text-ghost-white animate-fade-in">Featured Vendors</h3>
+          <div id="vendors-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Vendors will be loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="container mx-auto px-4 py-16">
+        <h3 class="text-4xl font-playfair text-center mb-12 text-ghost-white">Featured Frights</h3>
+        
+        <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Products will be loaded dynamically -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-pumpkin/20 mt-16">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-400">
+        <p>&copy; 2025 SpookyMart. All rights reserved. </p>
+        <p class="text-sm font-gloria mt-2">Happy Haunting!</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <div id="page-admin-dash" class="hidden">
+    <div class="flex h-screen bg-spooky-bg">
+      <aside class="w-64 bg-gray-900 shadow-lg shadow-pumpkin/10 flex flex-col">
+        <div class="h-16 flex items-center justify-center border-b border-gray-800">
+          <h1 class="text-2xl font-lobster text-pumpkin">Admin Panel</h1>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+          <a href="#" class="dash-nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span class="flex-1">Approve Vendors</span>
+            <span class="bg-slime-green text-spooky-bg text-xs font-bold rounded-full px-2 py-0.5">3</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-4.682 2.72a3 3 0 01-4.682-2.72m4.682 2.72c.503 0 1.004-.148 1.45-.423m-1.45.423a3 3 0 01-2.9 0m-2.9 0a3 3 0 01-4.682-2.72m0 0a3 3 0 013.741-.479M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>Manage Users</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0A.75.75 0 014.5 5.25v.75m0 0A.75.75 0 013.75 6h-.75m0 0v.75A.75.75 0 013 7.5h.75m0 0A.75.75 0 014.5 8.25v.75m0 0A.75.75 0 013.75 9h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 9.75v.75m0 0A.75.75 0 013.75 10.5h.75m0 0A.75.75 0 014.5 11.25v.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 12h-.75m0 0A.75.75 0 012.25 12.75v.75m0 0A.75.75 0 013 13.5h.75m0 0A.75.75 0 014.5 14.25v.75m0 0A.75.75 0 013.75 15h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 15.75v.75m0 0A.75.75 0 013.75 16.5h.75m0 0A.75.75 0 014.5 17.25v.75m0 0A.75.75 0 013.75 18h-.75m0 0A.75.75 0 012.25 18.75v.75M21.75 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0121 18h-.75m0 0A.75.75 0 0119.5 17.25v-.75m0 0A.75.75 0 0120.25 16.5h.75m0 0A.75.75 0 0121 15.75v-.75m0 0A.75.75 0 0120.25 15h-.75m0 0A.75.75 0 0119.5 14.25v-.75m0 0A.T5.75 0 0120.25 13.5h.75m0 0A.75.75 0 0121 12.75v-.75m0 0A.75.75 0 0120.25 12h-.75m0 0A.75.75 0 0119.5 11.25v-.75m0 0A.75.75 0 0120.25 10.5h.75m0 0A.75.75 0 0121 9.75v-.75m0 0A.75.75 0 0120.25 9h-.75m0 0A.75.75 0 0119.5 8.25v-.75m0 0A.75.75 0 0120.25 7.5h.75m0 0A.75.75 0 0121 6.75v-.75m0 0A.75.75 0 0120.25 6h-.75m0 0A.75.75 0 0119.5 5.25v-.75m0 0A.75.75 0 0120.25 4.5h.75m0 0A.75.75 0 0121 3.75v.75m0 0A.75.75 0 0120.25 3h-.75m0 0A.75.75 0 0119.5 2.25v.75M16.5 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0115.75 18h-.75m0 0A.75.75 0 0113.5 17.25v-.75m0 0A.75.75 0 0114.25 16.5h.75m0 0A.75.75 0 0115 15.75v-.75m0 0A.75.75 0 0114.25 15h-.75m0 0A.75.75 0 0113.5 14.25v-.75m0 0A.75.75 0 0114.25 13.5h.75m0 0A.75.75 0 0115 12.75v-.75m0 0A.75.75 0 0114.25 12h-.75m0 0A.75.75 0 0113.5 11.25v-.75m0 0A.75.75 0 0114.25 10.5h.75m0 0A.75.75 0 0115 9.75v-.75m0 0A.75.75 0 0114.25 9h-.75m0 0A.75.75 0 0113.5 8.25v-.75m0 0A.75.75 0 0114.25 7.5h.75m0 0A.75.75 0 0115 6.75v-.75m0 0A.75.75 0 0114.25 6h-.75m0 0A.75.75 0 0113.5 5.25v-.75m0 0A.75.75 0 0114.25 4.5h.75m0 0A.75.75 0 0115 3.75v.75m0 0A.75.75 0 0114.25 3h-.75m0 0A.75.75 0 0113.5 2.25v.75" /></svg>
+            <span>Products</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+            <span>Analytics</span>
+          </a>
+        </nav>
+        <div class="p-4 mt-auto border-t border-gray-800">
+          <a href="login.html"><button  class="page-switcher-btn w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-ghost-white bg-pumpkin/20 hover:bg-pumpkin/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+            <span>Logout</span>
+          </button></a>
+        </div>
+      </aside>
+
+      <main class="flex-1 p-8 overflow-y-auto">
+        <h2 class="text-3xl font-playfair text-ghost-white mb-6">Welcome, Admin!</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="dash-card bg-witch-purple">
+            <h4 class="dash-card-title">Total Revenue</h4>
+            <p class="dash-card-value">$45,231.89</p>
+            <p class="dash-card-delta good">+5.4% vs last month</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Active Vendors</h4>
+            <p class="dash-card-value">72</p>
+            <p class="dash-card-delta good">+2 new</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Pending Vendors</h4>
+            <p class="dash-card-value">3</p>
+            <p class="dash-card-delta bad">Needs Approval</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Total Orders</h4>
+            <p class="dash-card-value">1,204</p>
+            <p class="dash-card-delta good">+12% vs last month</p>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+          <h3 class="text-xl font-playfair text-ghost-white p-4 border-b border-gray-800">Pending Vendor Approvals</h3>
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gray-800">
+                <th class="table-th">Company Name</th>
+                <th class="table-th">Owner</th>
+                <th class="table-th">Date Joined</th>
+                <th class="table-th">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-td">Ghoulish Goods Inc.</td>
+                <td class="table-td">Morticia Addams</td>
+                <td class="table-td">Oct 26, 2025</td>
+                <td class="table-td">
+                  <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Approve</button>
+                  <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80">Deny</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-td">Creepy Costumes</td>
+                <td class="table-td">Jack Skellington</td>
+                <td class="table-td">Oct 25, 2025</td>
+                <td class="table-td">
+                  <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Approve</button>
+                  <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80">Deny</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-td">Wiccan Wares</td>
+                <td class="table-td">Sabrina Spellman</td>
+                <td class="table-td">Oct 24, 2025</td>
+                <td class="table-td">
+                  <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Approve</button>
+                  <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80">Deny</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <div id="page-vendor-dash" class="hidden">
+     <div class="flex h-screen bg-spooky-bg">
+      <aside class="w-64 bg-gray-900 shadow-lg shadow-pumpkin/10 flex flex-col">
+        <div class="h-16 flex items-center justify-center border-b border-gray-800">
+          <h1 class="text-2xl font-lobster text-pumpkin">Vendor Panel</h1>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+          <a href="#" class="dash-nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0A.75.75 0 014.5 5.25v.75m0 0A.75.75 0 013.75 6h-.75m0 0v.75A.75.75 0 013 7.5h.75m0 0A.75.75 0 014.5 8.25v.75m0 0A.75.75 0 013.75 9h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 9.75v.75m0 0A.75.75 0 013.75 10.5h.75m0 0A.75.75 0 014.5 11.25v.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 12h-.75m0 0A.75.75 0 012.25 12.75v.75m0 0A.75.75 0 013 13.5h.75m0 0A.75.75 0 014.5 14.25v.75m0 0A.75.75 0 013.75 15h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 15.75v.75m0 0A.75.75 0 013.75 16.5h.75m0 0A.75.75 0 014.5 17.25v.75m0 0A.75.75 0 013.75 18h-.75m0 0A.75.75 0 012.25 18.75v.75M21.75 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0121 18h-.75m0 0A.75.75 0 0119.5 17.25v-.75m0 0A.75.75 0 0120.25 16.5h.75m0 0A.75.75 0 0121 15.75v-.75m0 0A.75.75 0 0120.25 15h-.75m0 0A.75.75 0 0119.5 14.25v-.75m0 0A.T5.75 0 0120.25 13.5h.75m0 0A.75.75 0 0121 12.75v-.75m0 0A.75.75 0 0120.25 12h-.75m0 0A.75.75 0 0119.5 11.25v-.75m0 0A.75.75 0 0120.25 10.5h.75m0 0A.75.75 0 0121 9.75v-.75m0 0A.75.75 0 0120.25 9h-.75m0 0A.75.75 0 0119.5 8.25v-.75m0 0A.75.75 0 0120.25 7.5h.75m0 0A.75.75 0 0121 6.75v-.75m0 0A.75.75 0 0120.25 6h-.75m0 0A.75.75 0 0119.5 5.25v-.75m0 0A.75.75 0 0120.25 4.5h.75m0 0A.75.75 0 0121 3.75v.75m0 0A.75.75 0 0120.25 3h-.75m0 0A.75.75 0 0119.5 2.25v.75M16.5 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0115.75 18h-.75m0 0A.75.75 0 0113.5 17.25v-.75m0 0A.75.75 0 0114.25 16.5h.75m0 0A.75.75 0 0115 15.75v-.75m0 0A.75.75 0 0114.25 15h-.75m0 0A.75.75 0 0113.5 14.25v-.75m0 0A.75.75 0 0114.25 13.5h.75m0 0A.75.75 0 0115 12.75v-.75m0 0A.75.75 0 0114.25 12h-.75m0 0A.75.75 0 0113.5 11.25v-.75m0 0A.75.75 0 0114.25 10.5h.75m0 0A.75.75 0 0115 9.75v-.75m0 0A.75.75 0 0114.25 9h-.75m0 0A.75.75 0 0113.5 8.25v-.75m0 0A.75.75 0 0114.25 7.5h.75m0 0A.75.75 0 0115 6.75v-.75m0 0A.75.75 0 0114.25 6h-.75m0 0A.75.75 0 0113.5 5.25v-.75m0 0A.75.75 0 0114.25 4.5h.75m0 0A.75.75 0 0115 3.75v.75m0 0A.75.75 0 0114.25 3h-.75m0 0A.75.75 0 0113.5 2.25v.75" /></svg>
+            <span>My Products</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+            <span class="flex-1">Orders</span>
+             <span class="bg-pumpkin text-spooky-bg text-xs font-bold rounded-full px-2 py-0.5">5</span>
+          </a>
+          <a href="#" class="dash-nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+            <span>Analytics</span>
+          </a>
+        </nav>
+       <a href="login.html"> <div class="p-4 mt-auto border-t border-gray-800">
+          <button class="page-switcher-btn w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-ghost-white bg-pumpkin/20 hover:bg-pumpkin/30">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+            <span>Logout</span>
+          </button></a>
+        </div>
+      </aside>
+
+      <main class="flex-1 p-8 overflow-y-auto">
+        <h2 class="text-3xl font-playfair text-ghost-white mb-6">Welcome, Ghoulish Goods Inc.!</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="dash-card bg-pumpkin">
+            <h4 class="dash-card-title text-spooky-bg">Your Revenue</h4>
+            <p class="dash-card-value text-spooky-bg">$1,230.50</p>
+            <p class="dash-card-delta good text-spooky-bg/80">+15.2% vs last month</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">New Orders</h4>
+            <p class="dash-card-value">5</p>
+            <p class="dash-card-delta bad">Awaiting Fulfillment</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Total Products</h4>
+            <p class="dash-card-value">28</p>
+            <p class="dash-card-delta good">All in stock</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Your Rating</h4>
+            <p class="dash-card-value">4.8 / 5.0</p>
+            <p class="dash-card-delta good">(120 Reviews)</p>
+          </div>
+        </div>
+
+        <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+          <h3 class="text-xl font-playfair text-ghost-white p-4 border-b border-gray-800">Recent Orders</h3>
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gray-800">
+                <th class="table-th">Order ID</th>
+                <th class="table-th">Product</th>
+                <th class="table-th">Total</th>
+                <th class="table-th">Status</th>
+                <th class="table-th">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-td">#0F12A</td>
+                <td class="table-td">Classic Pointed Witch Hat</td>
+                <td class="table-td">$19.99</td>
+                <td class="table-td"><span class="status-badge bg-pumpkin/20 text-pumpkin">Processing</span></td>
+                <td class="table-td">
+                  <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Ship</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-td">#0F11C</td>
+                <td class="table-td">Spiderweb Doilies (x3)</td>
+                <td class="table-td">$24.00</td>
+                <td class="table-td"><span class="status-badge bg-slime-green/20 text-slime-green">Shipped</span></td>
+                <td class="table-td">
+                  <button class="px-3 py-1 text-sm bg-gray-600 text-ghost-white font-bold rounded-md" disabled>Shipped</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-td">#0F10A</td>
+                <td class="table-td">Glow-in-the-Dark Fangs</td>
+                <td class="table-td">$8.50</td>
+                <td class="table-td"><span class="status-badge bg-gray-600 text-gray-300">Delivered</span></td>
+                <td class="table-td">
+                   <button class="px-3 py-1 text-sm bg-gray-600 text-ghost-white font-bold rounded-md" disabled>Complete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+  <style>
+    /* Login Page Tabs */
+    .login-tab {
+      @apply w-full py-3 text-center font-semibold text-gray-400 cursor-pointer transition-all duration-300 border-b-2 border-transparent;
+    }
+    .login-tab:hover {
+      @apply text-ghost-white;
+    }
+    .login-tab.tab-active {
+      @apply text-pumpkin border-pumpkin;
+    }
+    
+    /* Customer Nav Links */
+    .nav-link {
+      @apply text-ghost-white font-semibold relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-pumpkin after:transition-all after:duration-300;
+    }
+    .nav-link:hover {
+      @apply text-pumpkin;
+    }
+    .nav-link:hover:after {
+      @apply w-full;
+    }
+    .nav-icon {
+      @apply text-ghost-white p-2 rounded-full hover:bg-pumpkin/20 hover:text-pumpkin transition-colors duration-300;
+    }
+
+    /* Product Card */
+    .product-card {
+      @apply bg-gray-900 rounded-lg shadow-lg overflow-hidden transition-all duration-300 group hover:shadow-2xl hover:shadow-pumpkin/20 hover:-translate-y-1;
+    }
+
+    /* Dashboard Sidebar */
+    .dash-nav-item {
+      @apply flex items-center space-x-3 px-4 py-3 rounded-md text-gray-400 font-semibold transition-all duration-300;
+    }
+    .dash-nav-item:hover {
+      @apply bg-pumpkin/20 text-ghost-white;
+    }
+    .dash-nav-item.active {
+      @apply bg-pumpkin text-spooky-bg shadow-md;
+    }
+    
+    /* Dashboard Stats Cards */
+    .dash-card {
+      @apply p-6 rounded-lg shadow-lg;
+    }
+    .dash-card-title {
+      @apply text-sm font-semibold text-gray-400 uppercase tracking-wider;
+    }
+    .dash-card-value {
+      @apply text-3xl font-bold text-ghost-white mt-2;
+    }
+    .dash-card-delta {
+      @apply text-sm font-semibold mt-1;
+    }
+    .dash-card-delta.good { @apply text-slime-green; }
+    .dash-card-delta.bad { @apply text-red-500; }
+
+    /* Dashboard Tables */
+    .table-th {
+      @apply p-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider;
+    }
+    .table-td {
+      @apply p-4 whitespace-nowrap text-sm text-ghost-white border-t border-gray-800;
+    }
+    .status-badge {
+      @apply px-2 py-0.5 text-xs font-bold rounded-full;
+    }
+  </style>
+
+<div id="page-cart" class="hidden">
+<main class="container mx-auto px-4 py-16 min-h-[60vh]">
+      <h1 class="text-4xl font-playfair mb-8 text-slime-green">
+        Your Spooky Mart 🛒
+      </h1>
+
+      <div class="bg-[#1A1A1A] rounded-xl shadow-lg p-6 space-y-6">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between bg-gray-900 p-4 rounded-lg border-l-4 border-pumpkin"
+        >
+          <div class="flex items-center space-x-4">
+            <img
+              src="https://images.unsplash.com/photo-1606813902913-0e2b0adcc8df?auto=format&fit=crop&w=600&q=80"
+              alt="Pumpkin Candle"
+              class="w-24 h-24 rounded-md object-cover"
+            />
+            <div>
+              <h3 class="text-xl font-semibold text-pumpkin">
+                Pumpkin Spice Candle
+              </h3>
+              <p class="text-gray-400">Soothing aroma for spooky nights</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-6 mt-4 md:mt-0">
+            <input
+              type="number"
+              aria-label="Quantity for Pumpkin Spice Candle"
+              min="1"
+              value="1"
+              class="w-16 text-center rounded-md bg-[#2A2A2A] text-white p-2 border border-pumpkin-dark focus:ring-2 focus:ring-pumpkin outline-none"
+            />
+            <p class="text-xl font-bold">$12.99</p>
+            <button
+              title="Remove Item"
+              class="text-red-500 hover:text-pumpkin transition font-bold text-lg"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row items-center justify-between bg-gray-900 p-4 rounded-lg border-l-4 border-witch-purple"
+        >
+          <div class="flex items-center space-x-4">
+            <img
+              src="https://images.unsplash.com/photo-1578325183261-5e6e9a2f0f9e?auto=format&fit=crop&w=600&q=80"
+              alt="Witch Hat"
+              class="w-24 h-24 rounded-md object-cover"
+            />
+            <div>
+              <h3 class="text-xl font-semibold text-pumpkin">
+                Classic Witch Hat
+              </h3>
+              <p class="text-gray-400">Perfect for any costume party</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-6 mt-4 md:mt-0">
+            <input
+              type="number"
+              aria-label="Quantity for Classic Witch Hat"
+              min="1"
+              value="2"
+              class="w-16 text-center rounded-md bg-[#2A2A2A] text-white p-2 border border-pumpkin-dark focus:ring-2 focus:ring-pumpkin outline-none"
+            />
+            <p class="text-xl font-bold">$24.50</p>
+            <button
+              title="Remove Item"
+              class="text-red-500 hover:text-pumpkin transition font-bold text-lg"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col md:flex-row justify-between items-center bg-gray-900 rounded-xl p-6 mt-10 shadow-xl border-t-4 border-slime-green"
+      >
+        <h2 class="text-3xl font-playfair">
+          Cart Subtotal: <span class="text-slime-green font-bold">$61.99</span>
+        </h2>
+        <a href="checkout.html"
+          class="mt-4 md:mt-0 bg-pumpkin hover:bg-pumpkin-dark text-spooky-bg px-8 py-3 rounded-md font-bold transition duration-300 shadow-lg"
+        >
+          Proceed to Checkout 💀
+        </a>
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href="index.html" class="text-pumpkin hover:text-pumpkin-dark underline transition">
+            Continue Shopping
+        </a>
+      </div>
+    </main>
+</div>
+<div id="page-about" class="hidden">
+<main class="container mx-auto px-4 py-16 min-h-[60vh]">
+    <h1 class="text-5xl font-playfair mb-12 text-center text-slime-green leading-tight">
+      Our Spooky Story 🦇
+    </h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      
+      <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-t-4 border-pumpkin">
+        <h2 class="text-3xl font-lobster text-pumpkin mb-4">
+          The Midnight Mission
+        </h2>
+        <p class="text-gray-300 leading-relaxed">
+          SpookyMart was founded on the simple, slightly eerie principle: **Every day is Halloween**. Our mission is to be the world's premier year-round source for the highest quality ghastly goods, from haunting home decor to wickedly wonderful wares.
+        </p>
+        <p class="text-gray-300 leading-relaxed mt-3">
+          We curate items that not only celebrate the macabre but also bring a touch of playful horror to your life, making the extraordinary ordinary.
+        </p>
+      </div>
+
+      <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-t-4 border-pink-white">
+        <h2 class="text-3xl font-lobster text-pink-white mb-4">
+          From Crypt to Commerce
+        </h2>
+        <p class="text-gray-300 leading-relaxed">
+          We started in a dusty, dimly-lit attic in Salem in 2020 by a trio of supernatural enthusiasts. What began as a small collection of hand-stitched ghosts and antique oddities quickly grew into the marketplace for the dark at heart.
+        </p>
+        <p class="text-gray-300 leading-relaxed mt-3">
+          Though we've moved to a slightly less dusty, more modern crypt, our commitment to artisanal, high-quality, and genuinely spooky products remains unshakeable.
+        </p>
+      </div>
+      
+      <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-t-4 border-slime-green">
+        <h2 class="text-3xl font-lobster text-slime-green mb-4">
+          Our Ghoulish Guarantee
+        </h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>**Quality**: Products are tested by actual ghosts (results are *chillingly* positive).</li>
+          <li>**Sustainability**: We source eco-friendly materials whenever possible—our pumpkins are 100% compostable.</li>
+          <li>**Support**: Our customer care team is available 24/7... in the afterlife, but also via email during business hours.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="mt-16 text-center">
+      <p class="text-lg text-gray-400">
+        "Come, we fly! And bring your credit card."
+      </p>
+      <p class="text-4xl font-gloria text-pumpkin mt-4">
+        — The SpookyMart Founder's Coven
+      </p>
+    </div>
+  </main>
+</div>
+<div id="page-order" class="hidden">
+<main class="container mx-auto px-4 py-16 min-h-[60vh]">
+    <h1 class="text-4xl font-playfair mb-8 text-ghost-white">My Orders</h1>
+    
+    <div class="space-y-6">
+      <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <div class="p-4 bg-gray-800 flex justify-between items-center">
+          <div>
+            <span class="text-gray-400 text-sm">ORDER PLACED</span>
+            <p>October 25, 2025</p>
+          </div>
+          <div>
+            <span class="text-gray-400 text-sm">TOTAL</span>
+            <p>$19.99</p>
+          </div>
+          <div>
+            <span class="text-gray-400 text-sm">ORDER #</span>
+            <p>#0F12A</p>
+          </div>
+        </div>
+        <div class="p-4 flex items-center">
+          <img src="https://via.placeholder.com/100x100.png?text=Witch+Hat" alt="Product" class="w-20 h-20 rounded-md object-cover">
+          <div class="flex-1 ml-4">
+            <h3 class="text-lg font-bold">Classic Pointed Witch Hat</h3>
+            <p class="text-sm text-gray-400">Sold by: Ghoulish Goods Inc.</p>
+            <span class="status-badge bg-pumpkin/20 text-pumpkin mt-2">Processing</span>
+          </div>
+          <a href="#" class="py-2 px-4 bg-pumpkin text-spooky-bg font-bold rounded-md hover:bg-pumpkin-dark transition duration-300">Track Order</a>
+        </div>
+      </div>
+
+      <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <div class="p-4 bg-gray-800 flex justify-between items-center">
+          <div>
+            <span class="text-gray-400 text-sm">ORDER PLACED</span>
+            <p>October 22, 2025</p>
+          </div>
+          <div>
+            <span class="text-gray-400 text-sm">TOTAL</span>
+            <p>$24.00</p>
+          </div>
+          <div>
+            <span class="text-gray-400 text-sm">ORDER #</span>
+            <p>#0F11C</p>
+          </div>
+        </div>
+        <div class="p-4 flex items-center">
+          <img src="https://via.placeholder.com/100x100.png?text=Spiderwebs" alt="Product" class="w-20 h-20 rounded-md object-cover">
+          <div class="flex-1 ml-4">
+            <h3 class="text-lg font-bold">Spiderweb Doilies (x3)</h3>
+            <p class="text-sm text-gray-400">Sold by: Ghoulish Goods Inc.</p>
+            <span class="status-badge bg-slime-green/20 text-slime-green mt-2">Shipped</span>
+          </div>
+          <a href="#" class="py-2 px-4 bg-pumpkin text-spooky-bg font-bold rounded-md hover:bg-pumpkin-dark transition duration-300">Track Order</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<div id="page-profile" class="hidden">
+<main class="container mx-auto px-4 py-16 min-h-[60vh]">
+    <h1 class="text-4xl text-center font-playfair mb-8 text-ghost-white">My Profile</h1>
+    
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gray-900 rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-playfair mb-4">Account Details</h2>
+        <form class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block mb-2 text-sm font-medium text-pumpkin">Full Name</label>
+              <input type="text" id="name" value="Morticia Addams" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:ring-2 focus:ring-pumpkin">
+            </div>
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-pumpkin">Email</label>
+              <input type="email" id="email" value="morticia@example.com" class="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-ghost-white focus:outline-none focus:ring-2 focus:ring-pumpkin">
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="py-2 px-6 bg-pumpkin text-spooky-bg font-bold rounded-md hover:bg-pumpkin-dark transition duration-300">Save Changes</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="bg-gray-900 rounded-lg shadow-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-playfair">My Addresses</h2>
+          <button class="py-2 px-4 bg-slime-green text-spooky-bg text-sm font-bold rounded-md hover:opacity-80 transition duration-300">Add New Address</button>
+        </div>
+        <div class="space-y-4">
+          <div class="border border-gray-700 p-4 rounded-md flex justify-between items-start">
+            <div>
+              <span class="px-2 py-0.5 text-xs font-bold rounded-full bg-pumpkin text-spooky-bg">Default</span>
+              <p class="font-bold mt-2">Morticia Addams</p>
+              <p class="text-gray-400">001 Cemetery Lane</p>
+              <p class="text-gray-400">Westfield, New Jersey, 07090</p>
+            </div>
+            <div>
+              <a href="#" class="text-pumpkin hover:underline text-sm">Edit</a>
+              <a href="#" class="text-red-500 hover:underline text-sm ml-2">Remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div id="page-admin" class="hidden">
+<div class="flex h-screen bg-spooky-bg">
+    <aside class="w-64 bg-gray-900 shadow-lg shadow-pumpkin/10 flex flex-col">
+      <div class="h-16 flex items-center justify-center border-b border-gray-800">
+        <h1 class="text-2xl font-lobster text-pumpkin">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="#" class="dash-nav-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="dash-nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span class="flex-1">Approve Vendors</span>
+          <span class="bg-slime-green text-spooky-bg text-xs font-bold rounded-full px-2 py-0.5">3</span>
+        </a>
+        </nav>
+      <div class="p-4 mt-auto border-t border-gray-800">
+        <a href="login.html" class="w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-ghost-white bg-pumpkin/20 hover:bg-pumpkin/30">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+      <h2 class="text-3xl font-playfair text-ghost-white mb-6">Welcome, Admin!</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="dash-card bg-witch-purple">
+          <h4 class="dash-card-title">Total Revenue</h4>
+          <p class="dash-card-value">$45,231.89</p>
+          <p class="dash-card-delta good">+5.4% vs last month</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Active Vendors</h4>
+          <p class="dash-card-value">72</p>
+          <p class="dash-card-delta good">+2 new</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Pending Vendors</h4>
+          <p class="dash-card-value">3</p>
+          <p class="dash-card-delta bad">Needs Approval</p>
+        </div>
+        <div class="dash-card bg-gray-800">
+          <h4 class="dash-card-title">Total Orders</h4>
+          <p class="dash-card-value">1,204</p>
+          <p class="dash-card-delta good">+12% vs last month</p>
+        </div>
+      </div>
+
+      <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+        <h3 class="text-xl font-playfair text-ghost-white p-4 border-b border-gray-800">Pending Vendor Approvals</h3>
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-800">
+              <th class="table-th">Company Name</th>
+              <th class="table-th">Owner</th>
+              <th class="table-th">Date Joined</th>
+              <th class="table-th">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table-td">Ghoulish Goods Inc.</td>
+              <td class="table-td">Morticia Addams</td>
+              <td class="table-td">Oct 26, 2025</td>
+              <td class="table-td">
+                <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80">Approve</button>
+                <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80">Deny</button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

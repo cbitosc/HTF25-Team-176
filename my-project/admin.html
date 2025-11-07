@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpookyMart - Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-spooky-bg font-nunito text-ghost-white">
+
+  <div class="flex h-screen bg-spooky-bg">
+    <aside class="w-64 bg-gray-900 shadow-lg shadow-pumpkin/10 flex flex-col">
+      <div class="h-16 flex items-center justify-center border-b border-gray-800">
+        <h1 class="text-2xl font-lobster text-pumpkin">Admin Panel</h1>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="#" id="dashboard-link" class="dash-nav-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" /></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" id="vendors-link" class="dash-nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <span class="flex-1">Approve Vendors</span>
+        </a>
+        <a href="#" id="products-link" class="dash-nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0A.75.75 0 014.5 5.25v.75m0 0A.75.75 0 013.75 6h-.75m0 0v.75A.75.75 0 013 7.5h.75m0 0A.75.75 0 014.5 8.25v.75m0 0A.75.75 0 013.75 9h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 9.75v.75m0 0A.75.75 0 013.75 10.5h.75m0 0A.75.75 0 014.5 11.25v.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 12h-.75m0 0A.75.75 0 012.25 12.75v.75m0 0A.75.75 0 013 13.5h.75m0 0A.75.75 0 014.5 14.25v.75m0 0A.75.75 0 013.75 15h-.75m0 0v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 013 15.75v.75m0 0A.75.75 0 013.75 16.5h.75m0 0A.75.75 0 014.5 17.25v.75m0 0A.75.75 0 013.75 18h-.75m0 0A.75.75 0 012.25 18.75v.75M21.75 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0121 18h-.75m0 0A.75.75 0 0119.5 17.25v-.75m0 0A.75.75 0 0120.25 16.5h.75m0 0A.75.75 0 0121 15.75v-.75m0 0A.75.75 0 0120.25 15h-.75m0 0A.75.75 0 0119.5 14.25v-.75m0 0A.T5.75 0 0120.25 13.5h.75m0 0A.75.75 0 0121 12.75v-.75m0 0A.75.75 0 0120.25 12h-.75m0 0A.75.75 0 0119.5 11.25v-.75m0 0A.75.75 0 0120.25 10.5h.75m0 0A.75.75 0 0121 9.75v-.75m0 0A.75.75 0 0120.25 9h-.75m0 0A.75.75 0 0119.5 8.25v-.75m0 0A.75.75 0 0120.25 7.5h.75m0 0A.75.75 0 0121 6.75v-.75m0 0A.75.75 0 0120.25 6h-.75m0 0A.75.75 0 0119.5 5.25v-.75m0 0A.75.75 0 0120.25 4.5h.75m0 0A.75.75 0 0121 3.75v.75m0 0A.75.75 0 0120.25 3h-.75m0 0A.75.75 0 0119.5 2.25v.75M16.5 18.75v.75a.75.75 0 01-1.5 0v-.75m1.5 0A.75.75 0 0115.75 18h-.75m0 0A.75.75 0 0113.5 17.25v-.75m0 0A.75.75 0 0114.25 16.5h.75m0 0A.75.75 0 0115 15.75v-.75m0 0A.75.75 0 0114.25 15h-.75m0 0A.75.75 0 0113.5 14.25v-.75m0 0A.75.75 0 0114.25 13.5h.75m0 0A.75.75 0 0115 12.75v-.75m0 0A.75.75 0 0114.25 12h-.75m0 0A.75.75 0 0113.5 11.25v-.75m0 0A.75.75 0 0114.25 10.5h.75m0 0A.75.75 0 0115 9.75v-.75m0 0A.75.75 0 0114.25 9h-.75m0 0A.75.75 0 0113.5 8.25v-.75m0 0A.75.75 0 0114.25 7.5h.75m0 0A.75.75 0 0115 6.75v-.75m0 0A.75.75 0 0114.25 6h-.75m0 0A.75.75 0 0113.5 5.25v-.75m0 0A.75.75 0 0114.25 4.5h.75m0 0A.75.75 0 0115 3.75v.75m0 0A.75.75 0 0114.25 3h-.75m0 0A.75.75 0 0113.5 2.25v.75" /></svg>
+          <span>Products</span>
+        </a>
+      </nav>
+      <div class="p-4 mt-auto border-t border-gray-800">
+        <button id="logout-btn" class="w-full flex items-center justify-center space-x-2 py-2 px-4 rounded-md text-ghost-white bg-pumpkin/20 hover:bg-pumpkin/30">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+      <div id="dashboard-content">
+        <h2 class="text-3xl font-playfair text-ghost-white mb-6">Dashboard</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Total Products</h4>
+            <p id="total-products" class="dash-card-value">-</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Total Stock</h4>
+            <p id="total-stock" class="dash-card-value">-</p>
+          </div>
+          <div class="dash-card bg-gray-800">
+            <h4 class="dash-card-title">Unapproved Vendors</h4>
+            <p id="unapproved-vendors" class="dash-card-value">-</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="vendors-content" class="hidden">
+        <h2 class="text-3xl font-playfair text-ghost-white mb-6">Approve Vendors</h2>
+        <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gray-800">
+                <th class="table-th">Company Name</th>
+                <th class="table-th">Owner</th>
+                <th class="table-th">Email</th>
+                <th class="table-th">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="vendors-table-body">
+              <!-- Vendor rows will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="products-content" class="hidden">
+        <h2 class="text-3xl font-playfair text-ghost-white mb-6">Products</h2>
+        <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+          <table class="w-full">
+            <thead>
+              <tr class="bg-gray-800">
+                <th class="table-th">ID</th>
+                <th class="table-th">Name</th>
+                <th class="table-th">Price</th>
+                <th class="table-th">Stock</th>
+              </tr>
+            </thead>
+            <tbody id="products-table-body">
+              <!-- Product rows will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const dashboardLink = document.getElementById('dashboard-link');
+    const vendorsLink = document.getElementById('vendors-link');
+    const productsLink = document.getElementById('products-link');
+    const dashboardContent = document.getElementById('dashboard-content');
+    const vendorsContent = document.getElementById('vendors-content');
+    const productsContent = document.getElementById('products-content');
+    const vendorsTableBody = document.getElementById('vendors-table-body');
+    const productsTableBody = document.getElementById('products-table-body');
+    const totalProducts = document.getElementById('total-products');
+    const totalStock = document.getElementById('total-stock');
+    const unapprovedVendors = document.getElementById('unapproved-vendors');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      window.location.href = 'login.html';
+    }
+
+    function showDashboard() {
+      dashboardContent.classList.remove('hidden');
+      vendorsContent.classList.add('hidden');
+      productsContent.classList.add('hidden');
+      dashboardLink.classList.add('active');
+      vendorsLink.classList.remove('active');
+      productsLink.classList.remove('active');
+      fetchDashboardData();
+    }
+
+    function showVendors() {
+      dashboardContent.classList.add('hidden');
+      vendorsContent.classList.remove('hidden');
+      productsContent.classList.add('hidden');
+      dashboardLink.classList.remove('active');
+      vendorsLink.classList.add('active');
+      productsLink.classList.remove('active');
+      fetchUnapprovedVendors();
+    }
+
+    function showProducts() {
+      dashboardContent.classList.add('hidden');
+      vendorsContent.classList.add('hidden');
+      productsContent.classList.remove('hidden');
+      dashboardLink.classList.remove('active');
+      vendorsLink.classList.remove('active');
+      productsLink.classList.add('active');
+      fetchProducts();
+    }
+
+    async function fetchDashboardData() {
+      try {
+        const [productsRes, vendorsRes] = await Promise.all([
+          fetch('/api/products', { headers: { 'Authorization': `Bearer ${token}` } }),
+          fetch('/api/auth/unapproved-vendors', { headers: { 'Authorization': `Bearer ${token}` } })
+        ]);
+        const products = await productsRes.json();
+        const vendors = await vendorsRes.json();
+
+        totalProducts.textContent = products.length;
+        totalStock.textContent = products.reduce((acc, p) => acc + p.stock_quantity, 0);
+        unapprovedVendors.textContent = vendors.length;
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+      }
+    }
+
+    async function fetchUnapprovedVendors() {
+      try {
+        const res = await fetch('/api/auth/unapproved-vendors', { headers: { 'Authorization': `Bearer ${token}` } });
+        const vendors = await res.json();
+        vendorsTableBody.innerHTML = '';
+        vendors.forEach(vendor => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="table-td">${vendor.company_name}</td>
+            <td class="table-td">${vendor.name}</td>
+            <td class="table-td">${vendor.email}</td>
+            <td class="table-td">
+              <button class="px-3 py-1 text-sm bg-slime-green text-spooky-bg font-bold rounded-md hover:opacity-80" onclick="approveVendor(${vendor.id})">Approve</button>
+              <button class="ml-2 px-3 py-1 text-sm bg-red-600 text-ghost-white font-bold rounded-md hover:opacity-80" onclick="denyVendor(${vendor.id})">Deny</button>
+            </td>
+          `;
+          vendorsTableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching unapproved vendors:', error);
+      }
+    }
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products', { headers: { 'Authorization': `Bearer ${token}` } });
+        const products = await res.json();
+        productsTableBody.innerHTML = '';
+        products.forEach(product => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="table-td">${product.id}</td>
+            <td class="table-td">${product.name}</td>
+            <td class="table-td">$${product.price.toFixed(2)}</td>
+            <td class="table-td">${product.stock_quantity}</td>
+          `;
+          productsTableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    }
+
+    async function approveVendor(id) {
+      try {
+        await fetch(`/api/auth/approve-vendor/${id}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${token}` } });
+        fetchUnapprovedVendors();
+        fetchDashboardData();
+      } catch (error) {
+        console.error('Error approving vendor:', error);
+      }
+    }
+
+    async function denyVendor(id) {
+      try {
+        await fetch(`/api/auth/deny-vendor/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+        fetchUnapprovedVendors();
+        fetchDashboardData();
+      } catch (error) {
+        console.error('Error denying vendor:', error);
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'login.html';
+    }
+
+    dashboardLink.addEventListener('click', showDashboard);
+    vendorsLink.addEventListener('click', showVendors);
+    productsLink.addEventListener('click', showProducts);
+    logoutBtn.addEventListener('click', logout);
+
+    // Initial load
+    showDashboard();
+  </script>
+
+</body>
+</html>
